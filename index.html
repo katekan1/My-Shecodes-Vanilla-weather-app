@@ -9,21 +9,25 @@
   <body>
     <div class="container">
       <h1>Vanilla Weather App</h1>
-      <input type="text" id="city-input" placeholder="Enter city" />
-      <button id="search-button">Search</button>
-      <div id="weather-data">
-        <h2 id="city-name">Johannesburg</h2>
-        <p id="date-time">Saturday 16:26</p>
-        <p id="weather-description">Sunny</p>
+      <div class="search-container">
+        <input type="text" id="city-input" placeholder="Enter city" />
+        <button id="search-button">Search</button>
+        <div id="weather-data">
+             <div class="weather-info">
+          <h2 id="city-name">Johannesburg</h2>
+          <p id="weather-description">
+            Saturday 16:26, Sunny<br />Humidity <span class="results">30%,</span> Wind: <span class="results">14km/h</span>
+          </p>
+    
+      </div>
+      <div class="weather-stats">
         <img id="weather-icon" src="images/sunny.png" alt="Weather icon" />
         <p id="temparature">21℃</p>
-        <p id="humidy">30%</p>
-        <p id="wind-speed">14km/h</p>
       </div>
-      <footer>
-        This project was Coded by Katekani Shihundla is Open Sourced on Github
-        and hosted on Netlify
-      </footer>
     </div>
+    <footer>
+      This project was Coded by Katekani Shihundla is Open Sourced on Github and
+      hosted on Netlify
+    </footer>
   </body>
 </html>
