@@ -1,71 +1,81 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   background-color: wheat;
-  height: 100vh;
   margin: 0;
+  padding: 0;
 }
 
 .container {
-  text-align: center;
-  background: #fff;
+  background-color: white;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 8px;
   margin: 0 auto;
-  width: 80%;
-  max-width: 800px;
+  max-width: 600px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-.search-container {
-  margin-bottom: 20px;
-  justify-content: center;
-}
-#city-input {
-  padding: 10px;
-  font-size: 16px;
-  width: 200px;
-}
-#search-button {
-  padding: 10px;
-  font-size: 16px;
-  margin-left: 10px;
-}
-.weather-left {
-  flex: 1;
-  text-align: left;
-}
-.weather-right {
-  flex: 1;
-  text-align: right;
-}
-
-#weather-stats {
+.header {
   display: flex;
-  align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
+  margin-bottom: 20px;
 }
 
-#weather-icon {
-  width: 50px;
-  height: 50px;
+#city-input {
+  width: 70%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
   margin-right: 10px;
 }
-
-#temparature {
-  font-size: 24px;
-  margin: 0;
+#search-button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #5952cc;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
 }
-footer {
+.weather-info {
+  display: flex;
+  flex-direction: column;
+  align-items: self-start;
+}
+.weather-top {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+#city-name {
+  font-size: 3em;
+  margin-right: 20px;
+}
+.weather-icon {
+  width: 50px;
+  height: 50px;
+  margin-right: 100px;
+}
+#temperature {
+  font-size: 3em;
+}
+.weather-details {
+  text-align: left;
+  color: grey;
+}
+.results {
+  color: deeppink;
+}
+
+.footer {
   margin-top: 20px;
   text-align: center;
+}
+.footer p {
   font-size: 0.9em;
+  color: #555;
 }
-footer a {
+.footer a {
   color: #007bff;
-  text-decoration: underline;
+  text-decoration: none;
 }
-footer a:hover {
+.footer a:hover {
   text-decoration: underline;
 }
