@@ -1,38 +1,39 @@
-let apiKey = `802c9c10be5f7cact2abba03f4270ao`;
-
-document.getElementById(`search-button`).addEventListener(`click`, () => {
-  let city = document.getElementById(`city-input`).value;
-  getWeatherData(city);
-});
-async function getWeatherData(city) {
-  let responce = await fetch(
-    `https;//api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
+document
+  .getElementById("search-button")
+  .addEventListener("click", async function () {
+    let city = document.getElementById("city-input").value;
+    try {
+      let weatherData = await getWeather(city);
+      updateWeatherUI(weatherData);
+      document.getElementById("city-name").textContent = city;
+    } catch (error) {
+      console.error("Error fetching weather data:", error);
+    }
+  });
+async function getWeather(city) {
+  let apiKey = "802c9c10be5f7cact2abba03f4270ao2";
+  let response = await fetch(
+    `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
   );
-  let data = await responce.json();
-  displayWeatherData(data);
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+  let data = await response.json();
+  return data;
 }
-function displayWeatherData(data) {
-  let cityName = data.name;
-  let temparature = data.main.temp;
-  let humidity = data.main.humidity;
-  let windspeed = data.wind.speed;
-  let weatherDescription = data.weather[0].description;
-  let weatherIcon = images / sunny.png;
-  let dateTime = new Date().toLocalString();
-
-  document.getElementById(`city-name`).textContent = cityName;
+function updateWeatherUI(data) {
+  let date = new Date();
+  document.getElementById("date-time").textContent = date.toLocaleString();
+  document.getElementById("weather-description").textContent =
+    data.weather[0].description;
   document.getElementById(
-    `temparature`
-  ).textContent = `Temparature:${temparature}℃`;
-  document.getElementById(`humidity`).textContent = `Humidity:${humidity} %`;
+    "humidity"
+  ).textContent = `Humidity: ${data.main.humidity}%`;
+  document.getElementById("wind").textContent = `Wind: ${
+    data.wind?.speed || 0
+  } km/h`;
+  document.getElementById("temperature").textContent = `${data.main.temp}°C`;
   document.getElementById(
-    `wind-speed`
-  ).textContent = `Wind Speed:${windspeed} km/h`;
-
-  document.getElementById(`weather-description`).textContent =
-    weatherDescription;
-
-  document.getElementById(`weather-icon`).textContent = weatherIcon;
-
-  document.getElementById(`date-time`).textContent = dateTime;
+    "weather-icon"
+  ).src = `http://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
 }
